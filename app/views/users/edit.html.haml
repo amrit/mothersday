@@ -1,0 +1,17 @@
+%h1 Admin Panel
+
+%h2 Users awaiting approval: 
+
+= form_tag admin_path, :method => :put do
+	%table
+		%tr
+			%th
+			%th Name
+			%th Email
+		- @users.each do |user|
+			%tr
+				%td= check_box_tag "user_ids[]", user.id, user.approved 
+				%td= user.name
+				%td= user.email
+
+	= submit_tag "Approve users!"

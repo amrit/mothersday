@@ -12,9 +12,14 @@ Mom::Application.routes.draw do
 
   get "log_out" => "sessions#destroy", :as => "log_out"
 
+  get "admin" => "users#edit", :as => "admin"
+
+  put "admin" => "users#update", :as => "admin"
+
 
   resources :users
   resources :sessions
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
