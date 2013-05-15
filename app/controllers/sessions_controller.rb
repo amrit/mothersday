@@ -6,7 +6,10 @@ class SessionsController < ApplicationController
   	user = User.authenticate(params[:email], params[:password])
   	if user.admin?
       session[:user_id] = user.id
-      redirect_to admin_path, :notice => "Welcome, admin!"
+      redirect_to admin_path
+    elsif user.approved == false
+      flash.now.alert = "You have not been approved yet."
+      render "new"
     elsif user
       session[:user_id] = user.id
       redirect_to root_url, :notice => "Logged in!"
