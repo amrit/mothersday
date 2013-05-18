@@ -23,6 +23,7 @@ Mom::Application.routes.draw do
   get "foursquare/connect"
   get 'foursquare/callback'
 
+
   resources :users
   resources :sessions
 
