@@ -39,5 +39,9 @@ gem 'jquery-rails'
 
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
-
 gem 'twilio-ruby'
+gem 'foursquare2'
+gem 'oauth2'
+gem 'forward'
+gem 'json'
+gem 'quimby'

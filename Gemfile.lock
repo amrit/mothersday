@@ -39,8 +39,24 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     erubis (2.7.0)
+    ethon (0.5.12)
+      ffi (>= 1.3.0)
+      mime-types (~> 1.18)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faraday (0.8.7)
+      multipart-post (~> 1.1)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
+    ffi (1.8.1)
+    forward (0.3.2)
+      highline (~> 1.6.18)
+      json (~> 1.7.7)
+      net-ssh (~> 2.6.7)
+    foursquare2 (1.9.7)
+      faraday (~> 0.8)
+      faraday_middleware (>= 0.8)
+      hashie (>= 1.0, < 3.0.0)
     haml (4.0.2)
       tilt
     haml-rails (0.4)
@@ -48,7 +64,10 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
+    hashie (2.0.5)
+    highline (1.6.19)
     hike (1.2.2)
+    httpauth (0.2.0)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.2.1)
@@ -63,7 +82,20 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.3)
+    multi_xml (0.5.3)
+    multipart-post (1.2.0)
+    net-ssh (2.6.7)
+    oauth2 (0.9.1)
+      faraday (~> 0.8)
+      httpauth (~> 0.1)
+      jwt (~> 0.1.4)
+      multi_json (~> 1.0)
+      multi_xml (~> 0.5)
+      rack (~> 1.2)
     polyglot (0.3.3)
+    quimby (0.4.5)
+      json
+      typhoeus
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -109,6 +141,8 @@ GEM
       builder (>= 2.1.2)
       jwt (>= 0.1.2)
       multi_json (>= 1.3.0)
+    typhoeus (0.6.3)
+      ethon (~> 0.5.11)
     tzinfo (0.3.37)
     uglifier (2.1.0)
       execjs (>= 0.3.0)
@@ -120,9 +154,14 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 3.2.1)
+  forward
+  foursquare2
   haml (>= 3.0.0)
   haml-rails
   jquery-rails
+  json
+  oauth2
+  quimby
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3

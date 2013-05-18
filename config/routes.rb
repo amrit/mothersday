@@ -16,6 +16,12 @@ Mom::Application.routes.draw do
 
   put "admin" => "users#update", :as => "admin"
 
+  post "push" => "foursquare#post", :as => "push"
+
+  get "success" => "foursquare#success", :as => "success"
+
+  get "foursquare/connect"
+  get 'foursquare/callback'
 
   resources :users
   resources :sessions
