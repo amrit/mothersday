@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def update 
     @users = User.where(:approved => false)
     @users.update_all({:approved => params[:approved]}, {:id => params[:user_ids]})
+    @users.save
     flash[:notice] = "Approved users!"
     redirect_to admin_path
   end

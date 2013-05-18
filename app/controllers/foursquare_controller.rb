@@ -16,7 +16,7 @@ class FoursquareController < ApplicationController
 
 	def post
   	checkin_hash = JSON.parse(params[:checkin])
-  	user_hash = JSON.parse(params[:user])
+  	
     
     
     user = User.find_by_email("slicekick@gmail.com")
@@ -28,8 +28,7 @@ class FoursquareController < ApplicationController
   		user.location = @location
   		if user.save
   			#number_to_send_to = "(424)234-9577"
-				location = user.location
-
+				
 				twilio_sid = "AC2ec5fa1768f45bef44fb03a9a2255406"
 				twilio_token = "ad3c0183666b730f2f72615fc61ebc1a"
 				twilio_phone_number = "(847)737-3174"
@@ -39,7 +38,7 @@ class FoursquareController < ApplicationController
 					@twilio_client.account.sms.messages.create(
 						:from => "+1#{twilio_phone_number}",
 						:to => number, 
-						:body => "Hey there! Amrit's just arrived at #{location}, safe and sound!")
+						:body => "Hey there! Amrit's just arrived at #{@location}, safe and sound!")
 					end
 				end
 			end
