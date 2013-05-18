@@ -4,12 +4,12 @@ class FoursquareController < ApplicationController
 
 	def connect
 		@foursquare = Foursquare::Base.new("YKLZRLZMEQJRUP511S5PJPLGZ4DJYFRRKCABAFFYCO4K3EIF", "VAQMIJPU2BGFMPIFCY5GRHIM0PH04EAS2B44H52ENQOOGTXZ")
-		redirect_to @foursquare.authorize_url("http://localhost:3000/foursquare/callback")
+		redirect_to @foursquare.authorize_url("https://hashtagmothersday.herokuapp.com/foursquare/callback")
 	end
 
 	def callback
 		@foursquare = Foursquare::Base.new("YKLZRLZMEQJRUP511S5PJPLGZ4DJYFRRKCABAFFYCO4K3EIF", "VAQMIJPU2BGFMPIFCY5GRHIM0PH04EAS2B44H52ENQOOGTXZ")
-		access_token = @foursquare.access_token(params["code"], "http://localhost:3000/foursquare/callback")
+		access_token = @foursquare.access_token(params["code"], "https://hashtagmothersday.herokuapp.com/foursquare/callback")
 		redirect_to root_path
 	end
 
