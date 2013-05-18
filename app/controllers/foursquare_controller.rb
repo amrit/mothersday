@@ -20,14 +20,14 @@ class FoursquareController < ApplicationController
     
     
     user = User.find_by_email("slicekick@gmail.com")
-    #approved_users = User.where(:approved => true)
-    #numbers_array = approved_users.map! &:phone_number
+    approved_users = User.where(:approved => true)
+    numbers_array = approved_users.map! &:phone_number
  
-  	if checkin_hash["shout"].include? "#testing"
+  	if checkin_hash["shout"].include? "#mom"
   		@location = checkin_hash["venue"]["name"]
   		user.location = @location
   		if user.save
-  			number_to_send_to = "(424)234-9577"
+  			#number_to_send_to = "(424)234-9577"
 				location = user.location
 
 				twilio_sid = "AC2ec5fa1768f45bef44fb03a9a2255406"
@@ -35,13 +35,14 @@ class FoursquareController < ApplicationController
 				twilio_phone_number = "(847)737-3174"
 
 				@twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
-
-				@twilio_client.account.sms.messages.create(
-					:from => "+1#{twilio_phone_number}",
-					:to => number_to_send_to, 
-					:body => "Hey there! Amrit's just arrived at #{location}.")
+				numbers_array.each do |number|
+					@twilio_client.account.sms.messages.create(
+						:from => "+1#{twilio_phone_number}",
+						:to => number, 
+						:body => "Hey there! Amrit's just arrived at #{location}, safe and sound!")
+					end
+				end
 			end
-		end
   	render :nothing => true
 	end
 
